@@ -4,75 +4,66 @@ import plotly.express as px
 from datetime import datetime
 
 # ==========================================
-# 1. CONFIGURATION VISUELLE : LOOK LUMINEUX & ÉCLATANT
+# 1. CONFIGURATION VISUELLE : MÉLANGE DESIGN ÉCLATANT
 # ==========================================
 st.set_page_config(
-    page_title="CardioCheck Premium | Interface Santé", 
-    page_icon="✨", 
+    page_title="CardioPanel Elite | High-Tech", 
+    page_icon="🏥", 
     layout="wide"
 )
 
-# Design CSS : Ultra-Lumineux, Tons Pastel et Verre Épuré
+# Design CSS : Blanc + Bleu Marine + Orange Douceur + Rouge Vif
 st.markdown("""
     <style>
-    /* Fond de l'application : Blanc cassé très propre */
+    /* Fond : Blanc pur avec subtil dégradé orange/bleu très clair */
     .stApp {
-        background-color: #f8faff;
-        background-image: radial-gradient(at 0% 0%, rgba(224, 242, 255, 0.5) 0, transparent 50%), 
-                          radial-gradient(at 100% 100%, rgba(255, 230, 240, 0.5) 0, transparent 50%);
-    }
-    
-    /* Barre latérale : Bleu Ciel Douceur */
-    [data-testid="stSidebar"] {
         background-color: #ffffff;
-        border-right: 1px solid #e1e8f0;
+        background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); /* Orange très très doux en fond */
+        background-attachment: fixed;
     }
     
-    /* Titres : Bleu Cobalt Moderne */
+    /* Barre latérale : Bleu Marine Profond */
+    [data-testid="stSidebar"] {
+        background-color: #001f3f !important; /* Marine */
+        color: white !important;
+    }
+    
+    /* Titres : Bleu Marine */
     h1, h2, h3 {
-        color: #1e3a8a !important;
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        font-weight: 800 !important;
-        letter-spacing: -0.5px;
+        color: #001f3f !important;
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: bold;
     }
 
-    /* Style du formulaire : Blanc pur avec ombre douce (Effet Papier) */
+    /* Cartes de saisie : Blanc avec bordure Orange Doux */
     .stForm {
-        background-color: #ffffff !important;
-        border-radius: 24px !important;
-        padding: 40px !important;
-        border: 1px solid #f0f4f8 !important;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02) !important;
+        background-color: white !important;
+        border-radius: 20px !important;
+        border: 2px solid #ffb347 !important; /* Orange doux */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
     }
     
-    /* Bouton d'envoi : Dégradé Énergisant */
+    /* Bouton d'envoi : Rouge Vif Éclatant */
     .stButton>button {
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+        background: linear-gradient(45deg, #ff0000 0%, #e60000 100%) !important; /* Rouge Vif */
         color: white !important;
-        border-radius: 16px !important;
+        border-radius: 50px !important;
         border: none !important;
-        height: 55px;
-        font-size: 18px !important;
-        font-weight: 600 !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3) !important;
+        height: 60px;
+        font-size: 20px !important;
+        font-weight: 800 !important;
+        box-shadow: 0 8px 20px rgba(230, 0, 0, 0.3) !important;
+        transition: all 0.3s ease;
     }
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4) !important;
-        filter: brightness(1.1);
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(230, 0, 0, 0.5) !important;
+        filter: brightness(1.2);
     }
 
-    /* Métriques : Couleurs vives pour la lumière */
+    /* Métriques : Bleu Marine & Rouge */
     [data-testid="stMetricValue"] {
-        color: #2563eb !important;
-        font-weight: 800 !important;
-    }
-    
-    /* Inputs : Bordures douces */
-    input, select, .stSlider {
-        border-radius: 12px !important;
-        border: 1px solid #e2e8f0 !important;
+        color: #ff0000 !important; /* Rouge pour les chiffres clés */
     }
     </style>
     """, unsafe_allow_html=True)
@@ -90,30 +81,31 @@ if 'sante_db' not in st.session_state:
 # ==========================================
 
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/2966/2966327.png", width=80)
-    st.title("CardioCheck")
-    st.markdown("<p style='color:#64748b;'>Plateforme Clinique v1.2</p>", unsafe_allow_html=True)
+    st.image("https://cdn-icons-png.flaticon.com/512/2966/2966327.png", width=90)
+    st.markdown("<h1 style='color:white; font-size:24px;'>CARDIO ELITE</h1>", unsafe_allow_html=True)
     st.markdown("---")
-    choix = st.radio("MENU", ["📋 Saisie Patients", "📊 Analyse Live"])
+    choix = st.radio("NAVIGATION", ["📥 ENREGISTREMENT", "📊 ANALYSE EXPERTE"])
     st.markdown("---")
-    st.success("Système Opérationnel")
+    st.warning("Mode : Administrateur Clinique")
 
-if choix == "📋 Saisie Patients":
-    st.title("✨ Nouvel Enregistrement")
-    st.markdown("Remplissez les constantes vitales ci-dessous pour synchronisation immédiate.")
+if choix == "📥 ENREGISTREMENT":
+    st.title("🏥 Dossier Patient Digital")
+    st.markdown("<p style='color:#001f3f;'>Saisie des paramètres vitaux de haute précision.</p>", unsafe_allow_html=True)
     
-    with st.form("form_medical"):
+    with st.form("form_vif"):
         col1, col2 = st.columns(2)
         with col1:
-            pid = st.text_input("👤 ID Patient", placeholder="ex: PAT-99")
-            age = st.number_input("📅 Âge", 1, 110, 35)
+            pid = st.text_input("📋 Code Patient Unique", placeholder="ex: PAT-007")
+            age = st.number_input("📅 Âge du Patient", 1, 100, 40)
         with col2:
-            tens = st.slider("💓 Tension (mmHg)", 80, 200, 120)
-            chol = st.number_input("🩸 Cholestérol (mg/dL)", 100, 400, 185)
+            st.markdown("<span style='color:#ffb347; font-weight:bold;'>💓 Tension Systolique</span>", unsafe_allow_html=True)
+            tens = st.slider("", 80, 200, 120)
+            chol = st.number_input("🩸 Cholestérol (mg/dL)", 100, 450, 200)
         
-        glyc = st.selectbox("🥐 Glycémie", ["Normal", "Élevé", "Critique"])
+        glyc = st.selectbox("🍏 Statut Glycémique", ["Normal", "Élevé", "Alerte Critique"])
         
-        submit = st.form_submit_button("🚀 ENREGISTRER LE PATIENT")
+        # Bouton Rouge Vif
+        submit = st.form_submit_button("🔥 ENREGISTRER MAINTENANT")
         
         if submit:
             if pid:
@@ -124,35 +116,35 @@ if choix == "📋 Saisie Patients":
                 }
                 st.session_state.sante_db = pd.concat([st.session_state.sante_db, pd.DataFrame([new_data])], ignore_index=True)
                 st.balloons()
-                st.success(f"Dossier de {pid} mis à jour.")
+                st.success(f"Fiche de {pid} synchronisée !")
             else:
-                st.error("L'ID Patient est obligatoire.")
+                st.error("L'ID Patient est requis.")
 
 else:
-    st.title("📊 Monitoring en Temps Réel")
+    st.title("📊 Rapport Diagnostique")
     
     if st.session_state.sante_db.empty:
-        st.info("En attente de données...")
+        st.info("Aucune donnée disponible pour l'analyse.")
     else:
         df = st.session_state.sante_db
         
-        # Cartes de scores lumineuses
+        # Métriques Marine et Rouge
         m1, m2, m3 = st.columns(3)
-        m1.metric("COHORTE", f"{len(df)} pers.")
-        m2.metric("TENSION MOY.", f"{round(df['Tension_Systolique'].mean(),1)}")
-        m3.metric("ÂGE MOYEN", f"{round(df['Age'].mean(),1)} ans")
+        m1.metric("COHORTE", len(df))
+        m2.metric("MOY. TENSION", f"{round(df['Tension_Systolique'].mean(),1)}")
+        m3.metric("MOY. CHOL.", f"{round(df['Cholesterol'].mean(),1)}")
         
         st.markdown("---")
         
         c1, c2 = st.columns(2)
         with c1:
-            fig1 = px.histogram(df, x="Tension_Systolique", title="État de la Tension", color_discrete_sequence=['#3b82f6'])
-            fig1.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+            # Graphique Bleu Marine
+            fig1 = px.histogram(df, x="Tension_Systolique", title="Distribution Tension", color_discrete_sequence=['#001f3f'])
             st.plotly_chart(fig1, use_container_width=True)
             
         with c2:
-            fig2 = px.scatter(df, x="Age", y="Cholesterol", title="Rapport Âge / Lipides", color="Glycemie", color_discrete_sequence=['#3b82f6', '#ef4444', '#f59e0b'])
-            fig2.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+            # Graphique Orange Doux
+            fig2 = px.scatter(df, x="Age", y="Cholesterol", title="Âge vs Cholestérol", color_discrete_sequence=['#ffb347'])
             st.plotly_chart(fig2, use_container_width=True)
 
-        st.dataframe(df, use_container_width=True)
+        st.table(df)
